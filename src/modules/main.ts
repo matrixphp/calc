@@ -38,7 +38,7 @@ export function themeColors (dark = false) {
     hist: dark? 'grey-5' : 'grey-7',
     input: dark? 'grey-5' : 'primary',
     btn1: dark? {bg: 'grey-9', txt: 'white'} : {bg: 'grey-1', txt: 'black'},
-    btn2: dark? {bg: 'grey-6', txt: 'black'} : {bg: 'grey-3', txt: 'black'},
+    btn2: dark? {bg: 'grey-6', txt: 'black'} : {bg: 'grey-4', txt: 'black'},
     btn3: dark? {bg: 'orange-14', txt: 'white'} : {bg: 'orange-8', txt: 'white'},
     btn4: dark? {bg: 'grey-7', txt: 'white'} : {bg: 'primary', txt: 'white'},
     toggle: dark? 'orange' : 'grey',

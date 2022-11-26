@@ -56,7 +56,7 @@
       </div>
       <div class="q-ml-sm w-100">
         <div class="row">
-          <q-input dense outlined clearable autofocus v-model="data" :color="theme.input" class="no-wrap expression w-100" @keydown.enter.prevent="dataCalculate()">
+          <q-input dense outlined clearable autofocus ref="inputRef" v-model="data" :color="theme.input" class="no-wrap expression w-100" @keydown.enter.prevent="dataCalculate()">
             <template v-slot:prepend>
               <q-icon name="calculate" :color="theme.calc"/>
             </template>
@@ -116,6 +116,7 @@ const data = ref<string>('');
 const dark = ref<boolean>(getLS('dark', false) as boolean);
 const theme = ref({});
 const history = ref(getLS('history', []) as object[]);
+const inputRef = ref<HTMLInputElement>(null);
 
 themeToggle(dark.value);
 
@@ -129,6 +130,7 @@ function themeToggle(v: boolean) {
 function dataAdd(v) {
   if (data.value === null) data.value = '';
   data.value += v;
+  inputRef.value.focus();
 }
 
 function dataPercent() {
@@ -143,7 +145,7 @@ function dataCalculate() {
     data.value = data.value.replaceAll(' ', '');
     let result = eval(data.value);
     result = +result.toFixed(3);
-    history.value.push({data: data.value, result: result})
+    history.value.unshift({data: data.value, result: result})
     data.value = '';
     setLS('history', history.value);
   } catch (e) {
