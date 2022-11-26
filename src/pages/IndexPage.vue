@@ -1,8 +1,8 @@
 <template>
   <q-page class="row justify-evenly">
-    <div class="row q-mt-sm">
+    <div class="row q-mt-sm no-wrap justify-center q-mx-sm main-container">
       <div class="row items-start">
-        <div style="display: grid; grid-template-columns: repeat(4, 1fr); grid-gap: 5px">
+        <div class="calc-grid">
           <q-btn dense class="button-size" :color="theme.btn2.bg" :text-color="theme.btn2.txt" @click="dataAdd('(')">
             <template v-slot:default>
               <div style="font-size: 1.1rem">(</div>
@@ -54,16 +54,16 @@
           <q-btn flat round :color="theme.toggle" icon="brightness_7" size="0.8rem" @click="themeToggle(!dark)"/>
         </div>
       </div>
-      <div class="q-ml-sm">
+      <div class="q-ml-sm w-100">
         <div class="row">
-          <q-input dense outlined clearable autofocus v-model="data" :color="theme.input" class="no-wrap expression" style="width: 500px;" @keydown.enter.prevent="dataCalculate()">
+          <q-input dense outlined clearable autofocus v-model="data" :color="theme.input" class="no-wrap expression w-100" @keydown.enter.prevent="dataCalculate()">
             <template v-slot:prepend>
               <q-icon name="calculate" :color="theme.calc"/>
             </template>
           </q-input>
         </div>
         <div class="q-mt-sm">
-          <q-list bordered class="rounded-borders" style="max-width: 500px;">
+          <q-list bordered class="rounded-borders w-100">
             <q-item v-ripple>
               <q-item-section>
                 <q-item-label header style="padding: 0">
@@ -137,16 +137,16 @@ function dataPercent() {
 
 function dataCalculate() {
   try {
-    if(data.value === '') return;
+    if (data.value === '') return;
 
     data.value = data.value.replaceAll(',', '.');
     data.value = data.value.replaceAll(' ', '');
     let result = eval(data.value);
+    result = +result.toFixed(3);
     history.value.push({data: data.value, result: result})
     data.value = '';
     setLS('history', history.value);
-  }
-  catch (e) {
+  } catch (e) {
     notify('Введено некорректное значение');
   }
 }
@@ -172,5 +172,20 @@ function historyClear() {
   .q-field__control, .q-field__marginal {
     height: 3rem;
   }
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.main-container {
+  max-width: 720px;
+  width: 100%;
+}
+
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5px
 }
 </style>
