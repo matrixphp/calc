@@ -41,9 +41,9 @@ function createWindow() {
     mainWindow.webContents.on('devtools-opened', () => {
       mainWindow?.webContents.closeDevTools();
     });
-
-    mainWindow.setMenuBarVisibility(false);
   }
+
+  mainWindow.setMenuBarVisibility(false)
 
   mainWindow.on('closed', () => {
     mainWindow = undefined;
