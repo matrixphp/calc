@@ -62,7 +62,7 @@
             </template>
           </q-input>
         </div>
-        <div class="q-mt-sm">
+        <div class="history q-mt-sm">
           <q-list bordered class="rounded-borders w-100">
             <q-item v-ripple>
               <q-item-section>
@@ -189,5 +189,36 @@ function historyClear() {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 5px
+}
+
+.history {
+  max-height: calc(100vh - 70px);
+  overflow-y: auto;
+}
+
+.body--dark {
+  .history::-webkit-scrollbar {
+    width: 11px;
+  }
+
+  .history::-webkit-scrollbar-thumb {
+    border: 3px solid #121212;
+    background-clip: padding-box;
+    border-radius: 9999px;
+    background-color: #686868; // Variants: 424242 545454 686868
+  }
+}
+
+.body--light {
+  .history::-webkit-scrollbar {
+    width: 11px;
+  }
+
+  .history::-webkit-scrollbar-thumb {
+    border: 3px solid #ffffff;
+    background-clip: padding-box;
+    border-radius: 9999px;
+    background-color: #adadad;
+  }
 }
 </style>
