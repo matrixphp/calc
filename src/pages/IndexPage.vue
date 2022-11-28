@@ -81,8 +81,8 @@
             <template v-for="(v, k) in history" :key="v">
               <q-item>
                 <q-item-section>
-                  <q-item-label caption overline class="q-ml-sm" style="font-size: 1rem; cursor: pointer;" @click="dataAdd(v.data)">{{ v.data }}</q-item-label>
-                  <q-item-label class="q-ml-lg" style="font-size: 1.1rem; cursor: pointer;" @click="dataAdd(v.result)">= {{ v.result }}</q-item-label>
+                  <q-item-label caption overline class="q-ml-sm" style="font-size: 0.9rem; cursor: pointer;" @click="dataAdd(v.data)">{{ v.data }}</q-item-label>
+                  <q-item-label class="q-ml-lg" style="font-size: 1rem; cursor: pointer;" @click="dataAdd(v.result)">= {{ v.result }}</q-item-label>
                 </q-item-section>
 
                 <q-item-section side>
@@ -198,7 +198,7 @@ function historyClear() {
 
 .body--dark {
   .history::-webkit-scrollbar {
-    width: 11px;
+    width: 10px;
   }
 
   .history::-webkit-scrollbar-thumb {
@@ -211,7 +211,7 @@ function historyClear() {
 
 .body--light {
   .history::-webkit-scrollbar {
-    width: 11px;
+    width: 10px;
   }
 
   .history::-webkit-scrollbar-thumb {
