@@ -73,7 +73,7 @@
               </q-item-section>
 
               <q-item-section side>
-                <q-btn flat round icon="close" :color="theme.histDel" size="0.7rem" @click="historyClear"/>
+                <q-btn flat round icon="delete" :color="theme.histDel" size="0.7rem" @click="historyClear"/>
               </q-item-section>
             </q-item>
             <q-separator/>
@@ -86,7 +86,7 @@
                 </q-item-section>
 
                 <q-item-section side>
-                  <q-btn flat round icon="delete" :color="theme.histDel" size="0.6rem" style="margin-right: 5px" @click="historyDel(v)"/>
+                  <q-btn flat round icon="close" :color="theme.histDel" size="0.6rem" style="margin-right: 5px" @click="historyDel(v)"/>
                 </q-item-section>
               </q-item>
               <q-separator inset v-if="k !== history.length - 1"/>
