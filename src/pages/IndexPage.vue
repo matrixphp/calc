@@ -141,8 +141,12 @@ function dataCalculate() {
   try {
     if (data.value === '') return;
 
+    data.value = data.value.replace(/[^0-9+\-*/().]/g, '');
+    console.log(data.value);
     data.value = data.value.replaceAll(',', '.');
     data.value = data.value.replaceAll(' ', '');
+    data.value = data.value.replaceAll('()', '');
+
     let result = eval(data.value);
     result = +result.toFixed(3);
     history.value.unshift({data: data.value, result: result})
